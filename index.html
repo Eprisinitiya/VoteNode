@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoteNode</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>VoteNode</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#create-poll">Create Poll</a></li>
+                <li><a href="#view-results">View Results</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h2>Welcome to VoteNode</h2>
+            <p>Cast your vote, create polls, and explore trending polls!</p>
+        </section>
+
+        <section id="create-poll">
+            <h2>Create a Poll</h2>
+            <form id="poll-form">
+                <label for="poll-title">Poll Title:</label>
+                <input type="text" id="poll-title" placeholder="Enter your poll title" required>
+
+                <label for="poll-options">Poll Options (comma-separated):</label>
+                <input type="text" id="poll-options" placeholder="Option 1, Option 2, Option 3" required>
+
+                <button type="submit">Create Poll</button>
+            </form>
+            <p id="poll-created-message"></p>
+        </section>
+
+        <section id="view-results">
+            <h2>Current Poll</h2>
+            <div id="poll-container"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 VoteNode. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
