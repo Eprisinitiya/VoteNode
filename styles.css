@@ -1,70 +1,49 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f5f5f5;
-    color: #333;
-}
-
+/* Custom Navbar  */
 header {
-    background: #4699eb;
-    color: white;
-    padding: 1rem;
-    text-align: center;
+    font-family: "Poppins", sans-serif;
 }
 
-header nav ul {
-    list-style: none;
-    padding: 0;
+header nav a {
+    transition: all 0.3s ease-in-out;
 }
 
-header nav ul li {
-    display: inline;
-    margin: 0 10px;
+/* Dropdown Styles */
+header nav .group-hover div {
+    animation: fadeIn 0.3s ease-in-out;
 }
 
-header nav ul li a {
-    color: white;
-    text-decoration: none;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-main {
-    padding: 2rem;
+/* Mobile Menu Animation */
+#mobile-menu {
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+    max-height: 0;
 }
 
-section {
-    margin-bottom: 2rem;
+#mobile-menu.open {
+    max-height: 300px; 
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #1a202c; 
+    color: #f7fafc; 
 }
 
-input, button {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+body.dark-mode header {
+    background-color: #2d3748; 
 }
 
-button {
-    background: #4699eb;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #357abd;
-}
-
-footer {
-    background: #333;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+body.dark-mode a {
+    color: #cbd5e0; 
 }

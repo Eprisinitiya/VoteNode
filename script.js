@@ -19,29 +19,32 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         pollCreatedMessage.textContent = "Poll created successfully!";
+        pollCreatedMessage.classList.add("animate-bounce");
+        setTimeout(() => pollCreatedMessage.classList.remove("animate-bounce"), 2000);
         renderPoll();
     });
 
     // Render Poll
     function renderPoll() {
         if (!currentPoll) {
-            pollContainer.innerHTML = "<p>No poll available. Create one to get started.</p>";
+            pollContainer.innerHTML = "<p class='text-gray-400'>No poll available. Create one to get started.</p>";
             return;
         }
 
         const pollHTML = `
-            <h3>${currentPoll.title}</h3>
-            <ul>
+            <h3 class="text-3xl font-bold mb-4">${currentPoll.title}</h3>
+            <div class="space-y-4">
                 ${currentPoll.options.map((option, index) => `
-                    <li>
-                        <button onclick="vote(${index})">${option}</button>
-                    </li>
+                    <button onclick="vote(${index})"
+                        class="w-full py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold rounded-full shadow-lg hover:shadow-2xl transition transform hover:scale-105">
+                        ${option}
+                    </button>
                 `).join("")}
-            </ul>
-            <p>Results:</p>
-            <ul>
+            </div>
+            <p class="text-lg text-gray-300 mt-6">Results:</p>
+            <ul class="mt-4 space-y-2">
                 ${currentPoll.options.map((option, index) => `
-                    <li>${option}: ${currentPoll.votes[index]} votes</li>
+                    <li class="text-white">${option}: ${currentPoll.votes[index]} votes</li>
                 `).join("")}
             </ul>
         `;

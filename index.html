@@ -1,53 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VoteNode - Lite</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>VoteNode - Futuristic Polling</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <h1>VoteNode</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#create-poll">Create Poll</a></li>
-                <li><a href="#view-results">View Results</a></li>
-            </ul>
-        </nav>
+
+<body class="bg-gradient-to-b from-gray-900 to-gray-800 text-white font-sans min-h-screen">
+
+    <header class="bg-gray-800 text-white py-4 px-6 rounded-b-3xl shadow-lg">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            Logo
+            <h1 class="text-3xl font-extrabold">VoteNode</h1>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex space-x-6">
+                <a href="#home" class="px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300">Home</a>
+                <a href="#create-poll" class="px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300">Create
+                    Poll</a>
+                <a href="#view-results" class="px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300">View
+                    Results</a>
+
+                <!-- Dropdown Menu -->
+                <div class="relative group">
+                    <button
+                        class="px-4 py-2 rounded-full bg-blue-600 hover:bg-blue-700 transition duration-300 flex items-center space-x-2">
+                        <span>More</span>
+                        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="absolute hidden group-hover:block bg-gray-700 rounded-lg shadow-lg mt-2 w-40">
+                        <a href="#about" class="block px-4 py-2 hover:bg-gray-600 transition duration-300">About Us</a>
+                        <a href="#contact" class="block px-4 py-2 hover:bg-gray-600 transition duration-300">Contact</a>
+                        <a href="#faq" class="block px-4 py-2 hover:bg-gray-600 transition duration-300">FAQ</a>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Dynamic Features -->
+            <div class="flex items-center space-x-4">
+                <!-- Search Bar -->
+                <div class="relative">
+                    <input type="text" placeholder="Search..."
+                        class="hidden md:block px-4 py-2 rounded-full bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    <svg class="absolute top-2 right-2 w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M11 4a7 7 0 100 14a7 7 0 100-14zm0 0v1m0 7a7 7 0 11-7-7 7 7 0 0114 0" />
+                    </svg>
+                </div>
+
+                <!-- Dark Mode Toggle -->
+                <button id="dark-mode-toggle"
+                    class="p-2 bg-gray-700 rounded-full hover:bg-gray-600 transition duration-300">
+                    <svg id="sun-icon" class="w-6 h-6 text-yellow-400 hidden" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.36 7.36l-1.41-1.41M7.05 7.05L5.64 5.64m11.31 11.31l1.41-1.41M6.34 6.34L4.93 4.93M12 6a6 6 0 100 12a6 6 0 000-12z" />
+                    </svg>
+                    <svg id="moon-icon" class="w-6 h-6 text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 12.79A9 9 0 1111.21 3A7 7 0 0021 12.79z" />
+                    </svg>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-toggle" class="md:hidden p-2 bg-gray-700 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-4">
+            <a href="#home"
+                class="block px-4 py-2 rounded-full bg-gray-700 hover:bg-gray-600 transition duration-300">Home</a>
+            <a href="#create-poll"
+                class="block px-4 py-2 rounded-full bg-gray-700 hover:bg-gray-600 transition duration-300">Create
+                Poll</a>
+            <a href="#view-results"
+                class="block px-4 py-2 rounded-full bg-gray-700 hover:bg-gray-600 transition duration-300">View
+                Results</a>
+        </div>
     </header>
 
-    <main>
-        <section id="home">
-            <h2>Namaskaram Mohit &#128519</h2>
-            <p>Cast your vote, create polls, and explore trending polls!</p>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto py-16 space-y-16">
+
+        <!-- Home Section -->
+        <section id="home" class="text-center">
+            <div class="p-8 bg-gray-800 rounded-3xl shadow-xl hover:shadow-2xl transition duration-300">
+                <h2 class="text-5xl font-bold mb-4">Namaskaram, Mohit! &#128519;</h2>
+                <p class="text-lg text-gray-300">Cast your vote, create polls, and explore trending polls with ease and
+                    style!</p>
+            </div>
         </section>
 
-        <section id="create-poll">
-            <h2>Create a Poll</h2>
-            <form id="poll-form">
-                <label for="poll-title">Poll Title:</label>
-                <input type="text" id="poll-title" placeholder="Enter your poll title" required>
-
-                <label for="poll-options">Poll Options (comma-separated):</label>
-                <input type="text" id="poll-options" placeholder="Option 1, Option 2, Option 3" required>
-
-                <button type="submit">Create Poll</button>
+        <!-- Create Poll Section -->
+        <section id="create-poll"
+            class="p-8 bg-gray-800 rounded-3xl shadow-xl hover:shadow-2xl transition duration-300">
+            <h2 class="text-4xl font-bold text-center mb-6">Create a Poll</h2>
+            <form id="poll-form" class="space-y-6">
+                <div>
+                    <label for="poll-title" class="block text-gray-400 mb-2">Poll Title:</label>
+                    <input type="text" id="poll-title" placeholder="Enter your poll title" required
+                        class="w-full px-4 py-3 bg-gray-700 text-white border-none rounded-full focus:outline-none focus:ring-4 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label for="poll-options" class="block text-gray-400 mb-2">Poll Options (comma-separated):</label>
+                    <input type="text" id="poll-options" placeholder="Option 1, Option 2, Option 3" required
+                        class="w-full px-4 py-3 bg-gray-700 text-white border-none rounded-full focus:outline-none focus:ring-4 focus:ring-blue-500">
+                </div>
+                <button type="submit"
+                    class="w-full py-3 bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 text-white font-bold rounded-full transition duration-300">
+                    Create Poll
+                </button>
             </form>
-            <p id="poll-created-message"></p>
+            <p id="poll-created-message" class="text-center mt-4 text-green-400"></p>
         </section>
 
-        <section id="view-results">
-            <h2>Current Poll</h2>
-            <div id="poll-container"></div>
+        <!-- View Results Section -->
+        <section id="view-results"
+            class="p-8 bg-gray-800 rounded-3xl shadow-xl hover:shadow-2xl transition duration-300">
+            <h2 class="text-4xl font-bold text-center mb-6">Current Poll</h2>
+            <div id="poll-container" class="text-center"></div>
         </section>
     </main>
 
-    <footer>
-        <p>© 2024 VoteNode. All rights reserved.</p>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-center py-4">
+        <p class="text-gray-500">© 2024 VoteNode. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
 </body>
+
 </html>
